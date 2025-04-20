@@ -1,0 +1,23 @@
+{
+    "Part A": [
+        "What are the key differences between a bar chart and a histogram?",
+        "Name three common data visualization libraries used in Python.",
+        "What is the purpose of a scatter plot?",
+        "Briefly explain the concept of a heatmap.",
+        "What is the role of color in data visualization?"
+    ],
+    "Part B": [
+        "Describe the advantages and disadvantages of using a pie chart for data representation.",
+        "Explain how you would choose the most appropriate visualization technique for representing time-series data.",
+        "Discuss the importance of data cleaning and preprocessing before creating visualizations.",
+        "Compare and contrast the use of line charts and area charts for displaying trends.",
+        "How can interactive visualizations enhance the understanding of complex datasets?"
+    ],
+    "Part C": [
+        "Critically evaluate the ethical considerations involved in data visualization, including issues of bias and misrepresentation.",
+        "Design a data visualization dashboard to track the performance of a social media campaign. Justify your choice of charts and metrics.",
+        "Discuss the role of storytelling in data visualization. How can visualizations be used to effectively communicate insights to a non-technical audience?",
+        "Explain the concept of dimensionality reduction and its relevance to data visualization. Provide examples of techniques used for dimensionality reduction.",
+        "Analyze the evolution of data visualization techniques over time. Discuss the impact of technological advancements on the field."
+    ]
+}
