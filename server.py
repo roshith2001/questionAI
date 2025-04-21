@@ -28,6 +28,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+
 # MongoDB setup using Motor (async)
 MONGO_CONNECTION_STRING = os.environ.get(
     "MONGO_CONNECTION_STRING",
