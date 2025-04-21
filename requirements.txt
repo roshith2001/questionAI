@@ -3,9 +3,11 @@ uvicorn
 motor
 python-jose[cryptography]
 passlib[bcrypt]
+passlib
 pydantic
 python-dotenv
 requests
 langchain
 pymongo
 pydantic[email]
+langchain_together
