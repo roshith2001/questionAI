@@ -187,7 +187,7 @@ def keep_alive():
         except Exception as e:
             print("Keep alive error:", e)
         # Wait for 25 minutes before next ping (adjust as needed)
-        time.sleep(1500)
+        time.sleep(700)
 
 # Enable the keep-alive thread only if the environment variable is set to "true"
 if os.environ.get("KEEP_ALIVE", "false").lower() == "true":
