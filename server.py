@@ -190,5 +190,5 @@ def keep_alive():
         time.sleep(1500)
 
 # Enable the keep-alive thread only if the environment variable is set to "true"
-if os.environ.get("KEEP_ALIVE", "false").lower() == "true":
+if os.environ.get("KEEP_ALIVE", "true").lower() == "true":
     threading.Thread(target=keep_alive, daemon=True).start()
