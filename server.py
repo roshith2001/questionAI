@@ -2,6 +2,10 @@ import os
 from datetime import datetime, timedelta
 import json
 
+import threading
+import time
+import requests
+
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.security import OAuth2PasswordBearer
@@ -107,13 +111,6 @@ async def collect_syllabus(syllabus: List[SyllabusEntry], current_user: dict = D
     
     return JSONResponse(content=response_doc)
 
-@app.get("/question_bank")
-async def get_question_bank():
-    """
-    Return the generated question bank CSV file.
-    """
-    return FileResponse("question_bank.csv", media_type="text/csv", filename="question_bank.csv")
-
 @app.get("/history")
 async def get_history(current_user: dict = Depends(get_current_user)):
     # Find all history items for the current user
@@ -173,3 +170,25 @@ async def login_user(user: LoginUser):
         "access_token": access_token,
         "token_type": "bearer"
     }
+
+def keep_alive():
+    """
+    Ping the service periodically to keep it awake.
+    The URL to ping is obtained from the environment variable KEEP_ALIVE_URL,
+    or defaults to the Render service URL.
+    """
+    # Use your public URL here; Render usually provides one.
+    # For example, "https://your-app.onrender.com/"
+    url = os.environ.get("KEEP_ALIVE_URL", "https://questionai-anze.onrender.com/history")
+    while True:
+        try:
+            response = requests.get(url)
+            print(f"Keep alive ping to {url} - Status: {response.status_code}")
+        except Exception as e:
+            print("Keep alive error:", e)
+        # Wait for 25 minutes before next ping (adjust as needed)
+        time.sleep(1500)
+
+# Enable the keep-alive thread only if the environment variable is set to "true"
+if os.environ.get("KEEP_ALIVE", "true").lower() == "true":
+    threading.Thread(target=keep_alive, daemon=True).start()
